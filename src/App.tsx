@@ -25,6 +25,13 @@ const App: React.FC = () => {
     setScore(scores)
   }
 
+  const newGame = () => {
+    setFieldCount(fieldCount)
+    setScore(0)
+    setTimer(false)
+    setTimeout(()=>setTimer(true),3000)
+  }
+
   return (
   <>
   <Header
@@ -39,6 +46,7 @@ const App: React.FC = () => {
           timer={timer}
           score={score}
           changeScore={changeScore}
+          newGame={newGame}
         />
       </div>
     </div>

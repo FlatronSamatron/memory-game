@@ -4,6 +4,8 @@ import Win from './Win'
 type Props ={
     flipHandler: (x: number, y: number, cardNumber: number) => void,
     cards: any[],
+    score: number,
+    newGame: () => void
 }
 
 interface props {
@@ -12,7 +14,7 @@ interface props {
     match: boolean;
 }
 
-const Card: React.FC<Props> = ({flipHandler, cards}) => {
+const Card: React.FC<Props> = ({flipHandler, cards, score, newGame}) => {
 
     let win = cards.flat().filter( el => !el.match).length
 
@@ -35,7 +37,7 @@ const Card: React.FC<Props> = ({flipHandler, cards}) => {
     
     return (
         <div>
-            {win === 0 ? <Win/> : fieldCard}
+            {win === 0 ? <Win score={score} newGame={newGame}/> : fieldCard}
         </div>
     )
 }

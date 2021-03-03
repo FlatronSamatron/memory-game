@@ -1,26 +1,18 @@
-import { Card, Button } from 'react-bootstrap'
-import img from '../images/congrat.webp'
+import { Button } from 'react-bootstrap'
+import img from '../images/unnamed.png'
 
-const Win = () => {
+type props ={
+  score:number,
+  newGame: () => void
+}
 
-    // const blockStyle = {
-    //     width:'100%',
-    //     height: '100vh',
-    //     backgroundImage: `${}`
-    // }
+const Win:React.FC<props> = ({score, newGame}) => {
 
     return (
         <div className='win-block'>
-            <Card>
-  <Card.Header>Featured</Card.Header>
-  <Card.Body>
-    <Card.Title>Special title treatment</Card.Title>
-    <Card.Text>
-      With supporting text below as a natural lead-in to additional content.
-    </Card.Text>
-    <Button variant="primary">Go somewhere</Button>
-  </Card.Body>
-</Card>
+            <img src={img} alt=""/>
+            <p className="score">Your score: {score}</p>
+            <Button variant="info" onClick={newGame}>New Game</Button>
         </div>
     )
 }

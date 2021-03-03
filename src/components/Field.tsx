@@ -7,7 +7,8 @@ type FieldCountProps ={
     fieldCount: number,
     timer: boolean,
     score: number,
-    changeScore: (scores: number) => void
+    changeScore: (scores: number) => void,
+    newGame: () => void
 }
 
 type arrType = {
@@ -20,7 +21,7 @@ type objType = {x: number,y: number, cardNumber:number} | null
 
 
 
-const Field: React.FC<FieldCountProps> = ({fieldCount,timer, score, changeScore}) => {
+const Field: React.FC<FieldCountProps> = ({fieldCount,timer, score, changeScore, newGame}) => {
 
     const [cards, setCards] = useState<arrType>([])
     const [match, setMatchCard] = useState<objType>(null)
@@ -77,7 +78,7 @@ const Field: React.FC<FieldCountProps> = ({fieldCount,timer, score, changeScore}
 
         setMatchCard({x,y,cardNumber})
 
-        let t = setTimeout(()=>{
+        setTimeout(()=>{
             if(match){
             if((match.cardNumber !== cardNumber) || (match.x === x && match.y === y)){
                 let flipCard = cards.map( el => el.map( card => {
@@ -113,6 +114,8 @@ const Field: React.FC<FieldCountProps> = ({fieldCount,timer, score, changeScore}
             <Card 
             flipHandler={flipHandler}
             cards={cards}
+            score={score}
+            newGame={newGame}
             />
         </Container>
     )
